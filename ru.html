@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>It's for you love, Rubesh!</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #e6d9ff, #f3e8ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+        color: #000;
+    }
+
+    .card {
+        background: linear-gradient(135deg, #f3e8ff, #e6d9ff);
+        padding: 45px 35px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        max-width: 360px;
+        position: relative;
+    }
+
+  h1, h2, p {
+        color: #000;
+    }
+
+    h1 {
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 17px;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    button {
+        padding: 12px 26px;
+        border: none;
+        border-radius: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #yes {
+        background: #b39ddb;
+        color: #000;
+        margin-right: 10px;
+    }
+
+    #yes:hover {
+        transform: scale(1.15);
+    }
+
+    #no {
+        background: #d1c4e9;
+        color: #000;
+        position: absolute;
+    }
+
+    .heart {
+        position: absolute;
+        font-size: 22px;
+        animation: float 4s linear infinite;
+        color: #000;
+        pointer-events: none;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-700px); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2023/03/27/audio_aa2a5b5a4b.mp3" type="audio/mp3">
+</audio>
+
+<div class="card">
+    <h1>Hello love! </h1>
+
+    <p>
+        I know, I am hard to handle and hard to love! But you choose me knowing all my flaws, yet loved me fully!
+        <br><br>
+        You feel like comfort, happiness, and home all at once.
+    </p>
+
+    <h2>Will you be mine, forever, in other lives?</h2>
+
+    <button id="yes" onclick="yesClicked()">Yeahhhhhhhhh</button>
+    <button id="no" onmouseover="moveNo()">Noooooo</button>
+</div>
+
+<script>
+    function yesClicked() {
+        document.body.innerHTML = `
+            <div style="text-align:center; color:#000; padding:40px;">
+                <h1 style="font-size:42px;">You said Yeahhhhhh</h1>
+                <p style="font-size:20px;">
+                    I chose you. And I would choose you over and over again.
+                </p>
+                <h2>Always you!</h2>
+            </div>
+        `;
+        setInterval(createHeart, 250);
+    }
+
+    function moveNo() {
+        const noBtn = document.getElementById("no");
+        const x = Math.random() * (window.innerWidth - 120);
+        const y = Math.random() * (window.innerHeight - 60);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💋";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.bottom = "0px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+    }
+</script>
+
+</body>
+</html>
